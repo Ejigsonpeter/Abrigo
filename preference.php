@@ -19,6 +19,31 @@ if (isset($_SESSION['login'])){
   $gender = $rw['gender'];
   $photo = $rw['passport'];
 }
+else {
+  header("location:login.php");
+}
+
+
+?>
+<?php
+include 'connection.php';
+if (isset($_POST['submit'])){
+  $q1 = mysqli_real_escape_string($con,$_POST['q1']);
+  $q2 = mysqli_real_escape_string($con,$_POST['q2']);
+  $q3 = mysqli_real_escape_string($con,$_POST['q3']);
+  $q4 = mysqli_real_escape_string($con,$_POST['q4']);
+  $q5 = mysqli_real_escape_string($con,$_POST['q5']);
+  $q6 = mysqli_real_escape_string($con,$_POST['q6']);
+
+
+  $sq = "UPDATE USERS SET alcohol = '$q1', cook = '$q2', guest = '$q3', clean = '$q4', smoke = '$q5', studious = '$q6' WHERE studentid = '$studentid' ";
+  $qu = mysqli_query($con,$sq);
+  if ($qu){
+    echo '<div class="alert alert-success wow fadeInLeft delay-03s"  role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Well done!</strong> Preference updated successfull!! </div>';
+  }
+}
 ?>
 <head>
     <title>Add Proferences</title>
@@ -224,12 +249,13 @@ if (isset($_SESSION['login'])){
 
              <div class="col-lg-8 col-md-12 col-sm-12">
                 <!-- Heading -->
-                <h3 class="heading-2">Add Preference</h3>
+                <h3 class="heading-2"></h3>
                  <div class="my-properties">
+                   <form action="Preference.php" method="post" enctype="multipart/form-data">
                      <table class="table brd-none">
                          <thead>
                          <tr>
-                             <th>QUESTION</th>
+                             <th>CHOOSE PREFERENCES</th>
                              <th></th>
                              <th></th>
                              <th></th>
@@ -274,7 +300,7 @@ if (isset($_SESSION['login'])){
                                    <div class="form-group radio_input">
                                       <label>  5. Do you smoke ? </label><br>
                                       <label><input type="radio" name="q5" value="yes" required="" class="icheck">&nbsp;&nbsp;&nbsp;&nbsp;yes </input></label> <br>
-                                      <label><input type="radio" name="q5" value="no"required="" class="icheck" placeholder="no" >&nbsp;&nbsp;&nbsp;&nbsp;no</input></label>
+                                      <label><input type="radio" name="q5" value="no"  required="" class="icheck" >&nbsp;&nbsp;&nbsp;&nbsp;no</input></label>
                         						</div>
                               </tr>
                               <tr>
@@ -291,15 +317,16 @@ if (isset($_SESSION['login'])){
                                    <button class="btn btn-md button-theme" name = "submit" >Save Changes</button>
                                  </td>
                                  <tr>
-
-
                          </tbody>
                      </table>
+                   </form>
                  </div>
             </div>
         </div>
     </div>
 </div>
+
+
 <!-- My bookmarks end -->
 
 <!-- Footer start -->

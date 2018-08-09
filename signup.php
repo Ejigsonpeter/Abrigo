@@ -192,7 +192,7 @@
                     <!-- Footer -->
                     <div class="footer">
                     <span>
-                        Already a member? <a href="login.html">Login here</a>
+                        Already a member? <a href="login.php">Login here</a>
                     </span>
                     </div>
                 </div>

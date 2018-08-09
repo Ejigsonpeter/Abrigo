@@ -3,19 +3,14 @@
 <?php
 include 'connection.php';
 session_start();
-if (isset($_SESSION['login'])){
-  $id = $_SESSION['login'];
+if (isset($_SESSION['lanlords'])){
+  $id = $_SESSION['lanlords'];
   //echo $id;
-  $sql =  "SELECT * FROM  users WHERE studentid = '$id' ";
+  $sql =  "SELECT * FROM  lanlords WHERE phoneno = '$id' ";
   $query = mysqli_query($con,$sql);
   $rw = mysqli_fetch_assoc($query);
   $fullname = $rw['fullname'];
-  $studentid= $rw['studentid'];
-  $faculty = $rw['faculty'];
-  $department = $rw['department'];
-  $level = $rw['level'];
-  $phoneno = $rw['phonenumber'];
-  $gender = $rw['gender'];
+  $phoneno = $rw['phoneno'];
   $photo = $rw['passport'];
 }
 else {
@@ -28,13 +23,13 @@ else {
 <?php
 include 'connection.php';
 if (isset($_POST['submit'])){
-  $studentid = mysqli_real_escape_string($con,$_POST['studentid']);
+  $phoneno = mysqli_real_escape_string($con,$_POST['phonenumber']);
   $filepath = 'image/';
    //copy the file into the new path
   copy($_FILES['upload']['tmp_name'], "".$filepath."".$_FILES['upload']['name']);
   $picture = ("".$filepath."".$_FILES['upload']['name']);
 
-  $sq = "UPDATE USERS SET passport = '$picture' WHERE studentid = '$studentid' ";
+  $sq = "UPDATE lanlords SET passport = '$picture' WHERE phoneno = '$phoneno' ";
   $qu = mysqli_query($con,$sq);
   if ($qu){
     echo '<div class="alert alert-success wow fadeInLeft delay-03s"  role="alert">
@@ -127,27 +122,22 @@ if (isset($_POST['submit'])){
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item ">
-                      <a class="nav-link " href="my-profile.html"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="profile.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-home"> &nbsp;  My Profile</i>
                       </a>
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
-                         <i class="fa fa-search"> &nbsp;  Search for Accomodation </i>
-                      </a>
-
-
-                  </li>
-                  <li class="nav-item ">
-                      <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
-                         <i class="fa fa-search"> &nbsp; Search for Roommate</i>
+                      <a class="nav-link " href="submit-property.php"   aria-haspopup="true" aria-expanded="false">
+                         <i class="flaticon-cross"> &nbsp;  Add Property</i>
                       </a>
 
                   </li>
+
+
                   <li class="nav-item ">
                       <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
-                         <i class="fa fa-eye"> &nbsp; View Accomodation</i>
+                         <i class="fa fa-eye"> &nbsp; View Properties</i>
                       </a>
 
                   </li>
@@ -215,23 +205,14 @@ if (isset($_POST['submit'])){
                         </li>
 
                         <li>
-                            <a href="Preference.php" class="">
-                                <i class="flaticon-cross"></i>Add Preferences
+                            <a href="submit-property.php" class="">
+                                <i class="flaticon-cross"></i>Add property
                             </a>
                         </li>
-                        <li>
-                            <a href="favorited-properties.html">
-                                <i class="fa fa-search"></i>Search for Accomodation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="my-properties.html">
-                                <i class="fa fa-search "></i>Search for Roommate
-                            </a>
-                        </li>
+
                         <li>
                             <a href="submit-property.html">
-                                <i class="fa fa-eye"></i>View Recommendation
+                                <i class="fa fa-eye"></i>View Property
                             </a>
                         </li>
                         <li>
@@ -253,27 +234,12 @@ if (isset($_POST['submit'])){
                 <div class="my-address">
                     <h3 class="heading-2">My Account</h3>
 
-                    <form action="my-profile.php" method="POST" enctype="multipart/form-data">
+                    <form action="profile.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Full Name :</label>
                             <input type="text" class="input-text" name="fullname" value = "<?php  echo $fullname;?>" readonly>
                         </div>
-                        <div class="form-group">
-                            <label>Student IT :</label>
-                            <input type="text" class="input-text" name="studentid"  value = "<?php  echo $studentid;?>" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Gender :</label>
-                            <input type="text" class="input-text" name="gender"  value = "<?php  echo $gender;?>" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Level</label>
-                            <input type="text" class="input-text" name="level" value = "<?php  echo $level; ?>" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Department :</label>
-                            <input type="text" class="input-text" name="department" value = "<?php  echo $department; ?>" readonly>
-                        </div>
+
 
                         <div class="form-group">
                             <label>Phone Number :</label>

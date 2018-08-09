@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="zxx">
+<?php
+include 'connection.php';
+if (isset($_POST['submit'])){
+  $phoneno = mysqli_real_escape_string($con,$_POST['phonenumber']);
+  $password = mysqli_real_escape_string($con,$_POST['password']);
 
+  $sql = "SELECT * FROM lanlords WHERE phoneno  = '$phoneno' AND password = '$password' ";
+  $query = mysqli_query($con,$sql);
+  $count = mysqli_num_rows($query);
+  if ($count > 0){
+    session_start();
+    $_SESSION['lanlords'] = $_POST['phonenumber'];
+    echo '<div class="alert alert-success wow fadeInLeft delay-03s"  role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Well done!</strong> Login successfull!!
+    </div>';
+    echo "<script> location.href='profile.php'; </script>";
+  }
+  else{
+    echo '<div class="alert alert-danger wow fadeInRight delay-03s"  role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Oh snap!</strong> Incorrect login details !!
+    </div>';
+
+  }
+
+}
+?>
 
 <head>
     <title>Landlord Login</title>
@@ -63,12 +90,12 @@
                         <!-- Name -->
                         <h3>Sign into your account</h3>
                         <!-- Form start -->
-                        <form action="http://storage.googleapis.com/themevessel-items/real-house/index.html" method="GET">
+                        <form action="lanlogin.php" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
-                                <input type="number" name="Phoneno" class="input-text" placeholder="Phone number">
+                                <input type="number" name="phonenumber" class="input-text" placeholder="Phone Number">
                             </div>
                             <div class="form-group">
-                                <input type="password" name="Password" class="input-text" placeholder="Password">
+                                <input type="password" name="password" class="input-text" placeholder="Password">
                             </div>
                             <div class="checkbox">
                                 <div class="ez-checkbox pull-left">
@@ -80,7 +107,7 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="form-group mb-0">
-                                <button type="submit" class="btn-md button-theme btn-block">login</button>
+                                <button type="submit" name = "submit" class="btn-md button-theme btn-block">login</button>
                             </div>
                         </form>
                         <!-- Form end -->
@@ -88,7 +115,7 @@
                     <!-- Footer -->
                     <div class="footer">
                     <span>
-                        Don't have an account? <a href="signup.html">Register here</a>
+                        Don't have an account? <a href="lsignup.php">Register here</a>
                     </span>
                     </div>
                 </div>

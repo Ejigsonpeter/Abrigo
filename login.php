@@ -114,7 +114,7 @@ if (isset($_POST['submit'])){
                     <!-- Footer -->
                     <div class="footer">
                     <span>
-                        Don't have an account? <a href="signup.html">Register here</a>
+                        Don't have an account? <a href="signup.php">Register here</a>
                     </span>
                     </div>
                 </div>

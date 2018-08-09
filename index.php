@@ -84,9 +84,9 @@
                             sign up
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li class="dropdown-item"><a class="dropdown-item" href="#">Landlord</a>
+                            <li class="dropdown-item"><a class="dropdown-item" href="lsignup.php">Landlord</a>
                             </li>
-                            <li class="dropdown-item"><a class="dropdown-item " href="#">User</a>
+                            <li class="dropdown-item"><a class="dropdown-item " href="signup.php">User</a>
                             </ul>
                         </li>
                     </li>
@@ -96,9 +96,9 @@
                             Login
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li class="dropdown-item"><a class="dropdown-item" href="#">Landlord</a>
+                            <li class="dropdown-item"><a class="dropdown-item" href="lanlogin.php">Landlord</a>
                             </li>
-                            <li class="dropdown-item"><a class="dropdown-item " href="#">User</a>
+                            <li class="dropdown-item"><a class="dropdown-item " href="login.php">User</a>
                             </ul>
                         </li>
                     </li>

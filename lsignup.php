@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html lang="zxx">
+<?php
+include 'connection.php';
 
+if (isset($_POST['submit'])){
+  $fullname = mysqli_real_escape_string($con,$_POST['fullname']);
+  $phonenumber = mysqli_real_escape_string($con,$_POST['phonenumber']);
+  $password = mysqli_real_escape_string($con,$_POST['password']);
+  $passport ="image/profiel.jpg";
+
+  $sql = "INSERT INTO lanlords (fullname,phoneno,password,passport)
+                  VALUES('$fullname',
+                          '$phonenumber',
+                          '$password',
+                          '$passport')";
+  $query = mysqli_query($con,$sql);
+  if ($query){
+    echo '<div class="alert alert-success wow fadeInLeft delay-03s"  role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Well done!</strong> Registration successfull!!
+    </div>';
+  }
+  else {
+    echo '<div class="alert alert-danger wow fadeInRight delay-03s"  role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Oh snap!</strong> Registration failed!!
+    </div>';
+
+  }
+
+
+}
+
+?>
 
 <head>
     <title>Register User</title>
@@ -63,21 +95,19 @@
                         <!-- Name -->
                         <h3>Create an account</h3>
                         <!-- Form start-->
-                        <form action="http://storage.googleapis.com/themevessel-items/real-house/index.html" method="GET">
+                        <form action="lsignup.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input type="text" name="fullname" class="input-text" placeholder="Full Name">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="username" class="input-text" placeholder="username">
+                                <input type="text" name="phonenumber" class="input-text" placeholder="Phone number">
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" class="input-text" placeholder="Password">
                             </div>
-                            <div class="form-group">
-                                <input type="password" name="confirm_Password" class="input-text" placeholder="Confirm Password">
-                            </div>
+
                             <div class="form-group mb-0">
-                                <button type="submit" class="btn-md button-theme btn-block">Signup</button>
+                                <button type="submit"  name = "submit" class="btn-md button-theme btn-block">Signup</button>
                             </div>
                         </form>
                         <!-- Form end-->
@@ -85,7 +115,7 @@
                     <!-- Footer -->
                     <div class="footer">
                     <span>
-                        Already a member? <a href="login.html">Login here</a>
+                        Already a member? <a href="lanlogin.php">Login here</a>
                     </span>
                     </div>
                 </div>
