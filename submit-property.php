@@ -32,7 +32,21 @@ if (isset($_POST['submit'])){
   $fullname = mysqli_real_escape_string($con,$_POST['fullname']);
   $email = mysqli_real_escape_string($con,$_POST['email']);
   $phone = mysqli_real_escape_string($con,$_POST['phone']);
-  
+  $filepath = 'image/';
+   //file 1
+  copy($_FILES['photo1']['tmp_name'], "".$filepath."".$_FILES['photo1']['name']);
+  $pic1 = ("".$filepath."".$_FILES['photo1']['name']);
+  //file 2
+  copy($_FILES['photo2']['tmp_name'], "".$filepath."".$_FILES['photo2']['name']);
+  $pic2 = ("".$filepath."".$_FILES['photo2']['name']);
+  //file 3
+  copy($_FILES['photo3']['tmp_name'], "".$filepath."".$_FILES['photo3']['name']);
+  $pic3 = ("".$filepath."".$_FILES['photo3']['name']);
+  //file 4
+  copy($_FILES['photo4']['tmp_name'], "".$filepath."".$_FILES['photo4']['name']);
+  $pic4 = ("".$filepath."".$_FILES['photo4']['name']);
+
+
 }
 ?>
 
@@ -246,13 +260,13 @@ if (isset($_POST['submit'])){
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Photo1</label>
-                                    <input type="file" class="input-text" name="address"  >
+                                    <input type="file" class="input-text" name="photo1"  >
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>photo 2</label>
-                                    <input type="file" class="input-text" name="address"  >
+                                    <input type="file" class="input-text" name="photo2"  >
                                 </div>
                             </div>
                         </div>
@@ -260,13 +274,13 @@ if (isset($_POST['submit'])){
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Photo 3</label>
-                                    <input type="file" class="input-text" name="address"  >
+                                    <input type="file" class="input-text" name="photo3"  >
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>photo 4 </label>
-                                    <input type="file" class="input-text" name="address"  >
+                                    <input type="file" class="input-text" name="photo4"  >
                                 </div>
                             </div>
                         </div>
