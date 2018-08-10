@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
 <?php
 include 'connection.php';
 session_start();
 if (isset($_SESSION['lanlords'])){
-  $id = $_SESSION['lanlords'];
-  //echo $id;
-  $sql =  "SELECT * FROM  lanlords WHERE phoneno = '$id' ";
-  $query = mysqli_query($con,$sql);
-  $rw = mysqli_fetch_assoc($query);
-  $fullname = $rw['fullname'];
-  $phoneno = $rw['phoneno'];
 
 }
-else {
-  header("location:lanlogin.php");
+else{
+  echo '<div class="alert alert-danger wow fadeInRight delay-03s"  role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Oh snap!</strong> You must login first!!
+  </div>';
+  header('location:lanlogin.php');
 }
-?>
+
+ ?>
 <?php
 include 'connection.php';
 
@@ -29,12 +26,14 @@ if (isset($_POST['submit'])){
   $bathroom = mysqli_real_escape_string($con,$_POST['bathroom']);
   $address = mysqli_real_escape_string($con,$_POST['address']);
   $campus = mysqli_real_escape_string($con,$_POST['campus']);
-  $fullname = mysqli_real_escape_string($con,$_POST['fullname']);
+  $fname = mysqli_real_escape_string($con,$_POST['fname']);
   $email = mysqli_real_escape_string($con,$_POST['email']);
-  $phone = mysqli_real_escape_string($con,$_POST['phone']);
+  $phoneno = mysqli_real_escape_string($con,$_POST['phone']);
+
   $filepath = 'image/';
-   //file 1
-  copy($_FILES['photo1']['tmp_name'], "".$filepath."".$_FILES['photo1']['name']);
+
+ //file 1
+   copy($_FILES['photo1']['tmp_name'], "".$filepath."".$_FILES['photo1']['name']);
   $pic1 = ("".$filepath."".$_FILES['photo1']['name']);
   //file 2
   copy($_FILES['photo2']['tmp_name'], "".$filepath."".$_FILES['photo2']['name']);
@@ -47,8 +46,46 @@ if (isset($_POST['submit'])){
   $pic4 = ("".$filepath."".$_FILES['photo4']['name']);
 
 
+
+
+  $sql = "INSERT INTO props (title,type,price,room,bathroom,address,campus,fullname,email,phoneno,photo1,photo2,photo3,photo4)
+                  VALUES('$title',
+                          '$type',
+                          '$price',
+                          '$room',
+                          '$bathroom',
+                          '$address',
+                          '$campus',
+                          '$fname',
+                          '$email',
+                          '$phoneno',
+                          '$pic1',
+                          '$pic2',
+                          '$pic3',
+                          '$pic4'
+                        )";
+  $query = mysqli_query($con,$sql);
+  if ($query){
+    echo '<div class="alert alert-success wow fadeInLeft delay-03s"  role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Well done!</strong> Apartment registered successfully !!!!
+    </div>';
+  }
+  else {
+    echo '<div class="alert alert-danger wow fadeInRight delay-03s"  role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Oh snap!</strong> Registration failed!!
+    </div>';
+
+  }
+
+
 }
+
 ?>
+
+
+
 
 <head>
     <title>Property</title>
@@ -200,7 +237,7 @@ if (isset($_POST['submit'])){
                         <div class="search-contents-sidebar mb-30">
                             <div class="form-group">
                                 <label>Property Title</label>
-                                <input type="text" class="input-text" name="title" placeholder="Property Title">
+                                <input type="text" class="input-text" name="title" >
                             </div>
                             <div class="row">
 
@@ -313,7 +350,7 @@ if (isset($_POST['submit'])){
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="input-text" name="fullname" placeholder="Name">
+                                    <input type="text" class="input-text" name="fname" placeholder="Name">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -328,7 +365,7 @@ if (isset($_POST['submit'])){
                                     <input type="text" class="input-text" name="phone"  placeholder="Phone">
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="form-group">
                                 <button name = "submit" class="btn btn-md button-theme mb-30">Submit</button>
                             </div>
                         </div>
