@@ -117,7 +117,7 @@ if (isset($_POST['submit'])){
 <header class="main-header">
   <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand logo" href="index.html">
+          <a class="navbar-brand logo" href="my-profile.php">
               <img src="img/logos/logo.png" alt="logo">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,26 +127,26 @@ if (isset($_POST['submit'])){
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item ">
-                      <a class="nav-link " href="my-profile.html"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="my-profile.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-home"> &nbsp;  My Profile</i>
                       </a>
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="Properties-details.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-search"> &nbsp;  Search for Accomodation </i>
                       </a>
 
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="#"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-search"> &nbsp; Search for Roommate</i>
                       </a>
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="Properties-list"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-eye"> &nbsp; View Accomodation</i>
                       </a>
 
@@ -170,23 +170,7 @@ if (isset($_POST['submit'])){
     </div>
     <div class="page-info">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="breadcrumb-area">
-                        <ul>
-                            <li><a href="index.html">Index</a></li>
-                            <li><span>/</span>My Profile</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="contact-info">
-                        <ul>
-                            <li><i class="fa fa-phone"></i> +2348136777465</li>
-                            <li><a href="contact.html" class="btn btn-md button-theme">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
+            
             </div>
         </div>
     </div>
@@ -209,7 +193,7 @@ if (isset($_POST['submit'])){
                 <div class="my-account-box">
                     <ul>
                         <li>
-                            <a href="my-profile.html" class="active">
+                            <a href="my-profile.php" class="active">
                                 <i class="flaticon-people"></i>My Profile
                             </a>
                         </li>
@@ -220,22 +204,22 @@ if (isset($_POST['submit'])){
                             </a>
                         </li>
                         <li>
-                            <a href="favorited-properties.html">
+                            <a href="properties-details.php">
                                 <i class="fa fa-search"></i>Search for Accomodation
                             </a>
                         </li>
                         <li>
-                            <a href="my-properties.html">
+                            <a href="#">
                                 <i class="fa fa-search "></i>Search for Roommate
                             </a>
                         </li>
                         <li>
-                            <a href="submit-property.html">
-                                <i class="fa fa-eye"></i>View Recommendation
+                            <a href="Properties-list.php">
+                                <i class="fa fa-eye"></i>View Accomodation
                             </a>
                         </li>
                         <li>
-                            <a href="change-password.html">
+                            <a href="change-password.php">
                                 <i class="flaticon-lock"></i>Change Password
                             </a>
                         </li>
@@ -313,13 +297,6 @@ if (isset($_POST['submit'])){
 <!-- Footer end -->
 
 <!-- Full Page Search -->
-<div id="full-page-search">
-    <button type="button" class="close">×</button>
-    <form action="http://storage.googleapis.com/themevessel-items/real-house/index.html#">
-        <input type="search" value="" placeholder="type keyword(s) here" />
-        <button type="submit" class="btn btn-sm button-theme">Search</button>
-    </form>
-</div>
 
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/popper.min.js"></script>

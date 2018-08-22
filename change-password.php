@@ -3,46 +3,66 @@
 <?php
 include 'connection.php';
 session_start();
-if (isset($_SESSION['lanlords'])){
-  $id = $_SESSION['lanlords'];
+if (isset($_SESSION['login'])){
+  $id = $_SESSION['login'];
   //echo $id;
-  $sql =  "SELECT * FROM  lanlords WHERE phoneno = '$id' ";
+  $sql =  "SELECT * FROM  users WHERE studentid = '$id' ";
   $query = mysqli_query($con,$sql);
   $rw = mysqli_fetch_assoc($query);
   $fullname = $rw['fullname'];
-  $phoneno = $rw['phoneno'];
+  $studentid= $rw['studentid'];
+  $faculty = $rw['faculty'];
+  $department = $rw['department'];
+  $level = $rw['level'];
+  $phoneno = $rw['phonenumber'];
+  $gender = $rw['gender'];
   $photo = $rw['passport'];
+
 }
-else {
-  header("location:login.php");
+else{
+//  header('location:login.php');
 }
-
-
-
-?>
+ ?>
 <?php
-include 'connection.php';
-if (isset($_POST['submit'])){
-  $phoneno = mysqli_real_escape_string($con,$_POST['phonenumber']);
-  $filepath = 'image/';
-   //copy the file into the new path
-  copy($_FILES['upload']['tmp_name'], "".$filepath."".$_FILES['upload']['name']);
-  $picture = ("".$filepath."".$_FILES['upload']['name']);
+if (isset($_POST['save'])){
+  $npassword = mysqli_real_escape_string($con,$_POST['npassword']);
+  $cnpassword = mysqli_real_escape_string($con,$_POST['cnpassword']);
 
-  $sq = "UPDATE lanlords SET passport = '$picture' WHERE phoneno = '$phoneno' ";
-  $qu = mysqli_query($con,$sq);
-  if ($qu){
-    echo '<div class="alert alert-success wow fadeInLeft delay-03s"  role="alert">
+  if ($npassword != $cnpassword){
+    echo '<div class="alert alert-danger wow fadeInRight delay-03s"  role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Well done!</strong> Profile picture updated successfull!!';
+        <strong>Oh snap!</strong> Password Mismatch !!
+    </div>';
+  }
+  elseif (($npassword = "") or($cnpassword = "")) {
+     echo '<div class="alert alert-danger wow fadeInRight delay-03s"  role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Oh snap!</strong> please field cannot be empty !!
+    </div>';
+
+  }
+  else{
+    $sqli = "UPDATE users SET password = '$npassword' WHERE studentid = '$id' ";
+    $queryme = mysqli_query($con,$sqli);
+    if ($queryme){
+      echo '<div class="alert alert-success wow fadeInLeft delay-03s"  role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Password Updated successfully !!!
+      </div>';
+    }
+    else{
+      echo '<div class="alert alert-danger wow fadeInRight delay-03s"  role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Oh snap!</strong> Password Error !!
+      </div>';
+    }
+
   }
 }
-?>
 
-
-
+ ?>
 <head>
-    <title>Profile</title>
+    <title>Change Password</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
@@ -77,9 +97,9 @@ if (isset($_POST['submit'])){
     <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script  src="js/ie-emulation-modes-warning.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- php5 shim and Respond.js for IE8 support of php5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script  src="js/html5shiv.min.js"></script>
+    <script  src="js/php5shiv.min.js"></script>
     <script  src="js/respond.min.js"></script>
     <![endif]-->
 </head>
@@ -87,6 +107,10 @@ if (isset($_POST['submit'])){
 <div class="page_loader"></div>
 
 <!-- Top header start -->
+
+<!-- Top header end -->
+
+<!-- Main header start -->
 <header class="top-header top-header-bg d-none d-xl-block d-lg-block d-md-block" id="top-header-2">
     <div class="container">
         <div class="row">
@@ -112,7 +136,7 @@ if (isset($_POST['submit'])){
 <header class="main-header">
   <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand logo" href="profile.php">
+          <a class="navbar-brand logo" href="my-profile.php">
               <img src="img/logos/logo.png" alt="logo">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,22 +146,27 @@ if (isset($_POST['submit'])){
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item ">
-                      <a class="nav-link " href="profile.php"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="my-profile.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-home"> &nbsp;  My Profile</i>
                       </a>
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="submit-property.php"   aria-haspopup="true" aria-expanded="false">
-                         <i class="flaticon-cross"> &nbsp;  Add Property</i>
+                      <a class="nav-link " href="properties-details.php"   aria-haspopup="true" aria-expanded="false">
+                         <i class="fa fa-search"> &nbsp;  Search for Accomodation </i>
+                      </a>
+
+
+                  </li>
+                  <li class="nav-item ">
+                      <a class="nav-link " href="#"   aria-haspopup="true" aria-expanded="false">
+                         <i class="fa fa-search"> &nbsp; Search for Roommate</i>
                       </a>
 
                   </li>
-
-
                   <li class="nav-item ">
-                      <a class="nav-link " href="profile.php"   aria-haspopup="true" aria-expanded="false">
-                         <i class="fa fa-eye"> &nbsp; View Properties</i>
+                      <a class="nav-link " href="properties-list.php"   aria-haspopup="true" aria-expanded="false">
+                         <i class="fa fa-eye"> &nbsp; View Accomodation</i>
                       </a>
 
                   </li>
@@ -155,43 +184,25 @@ if (isset($_POST['submit'])){
 <div class="sub-banner">
     <div class="container">
         <div class="page-name">
-            <h1>My Profile</h1>
+            <h1>Change Password</h1>
         </div>
     </div>
     <div class="page-info">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="breadcrumb-area">
-                        <ul>
-                            <li><a href="index.php">Index</a></li>
-                            <li><span>/</span>My Profile</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="contact-info">
-                        <ul>
-                            <li><i class="fa fa-phone"></i> +2348136777465</li>
-                            <li><a href="contact.html" class="btn btn-md button-theme">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>
 <!-- Sub Banner end -->
 
-<!-- My profile start -->
-<div class="my-profile content-area">
+<!-- Change password start -->
+<div class="change-password content-area-6">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-lg-4 col-md-4">
                 <!-- Avatar start -->
                 <div class="edit-profile-photo">
                     <img src = '<?php  echo $photo;?>' alt="profile-photo" class="img-fluid">
-
 
                 </div>
                 <!-- Avatar end -->
@@ -199,24 +210,33 @@ if (isset($_POST['submit'])){
                 <div class="my-account-box">
                     <ul>
                         <li>
-                            <a href="profile.php" class="active">
+                            <a href="my-profile.php" class="active">
                                 <i class="flaticon-people"></i>My Profile
                             </a>
                         </li>
 
                         <li>
-                            <a href="submit-property.php" class="">
-                                <i class="flaticon-cross"></i>Add property
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="my-properties.php">
-                                <i class="fa fa-eye"></i>View Property
+                            <a href="Preference.php" class="">
+                                <i class="flaticon-cross"></i>Add Preferences
                             </a>
                         </li>
                         <li>
-                            <a href="change-password2.php">
+                            <a href="properties-details.php">
+                                <i class="fa fa-search"></i>Search for Accomodation
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-search "></i>Search for Roommate
+                            </a>
+                        </li>
+                        <li>
+                            <a href="properties-list.php">
+                                <i class="fa fa-eye"></i>View Accomodation
+                            </a>
+                        </li>
+                        <li>
+                            <a href="change-password.php">
                                 <i class="flaticon-lock"></i>Change Password
                             </a>
                         </li>
@@ -229,32 +249,23 @@ if (isset($_POST['submit'])){
                 </div>
                 <!-- My account box end -->
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12">
-                <!-- My address start-->
+
+            <div class="col-lg-8 col-md-8">
+                <!-- My address start -->
                 <div class="my-address">
-                    <h3 class="heading-2">My Account</h3>
+                    <h3 class="heading-2">Change Password</h3>
 
-                    <form action="profile.php" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Full Name :</label>
-                            <input type="text" class="input-text" name="fullname" value = "<?php  echo $fullname;?>" readonly>
-                        </div>
-
+                    <form method="post" action = "change-password.php" enctype="multipart/form-data">
 
                         <div class="form-group">
-                            <label>Phone Number :</label>
-                            <input type="text" class="input-text" name="phonenumber" value = "<?php  echo $phoneno; ?>" readonly>
+                            <label>New Password</label>
+                            <input type="password" class="input-text" name="npassword" placeholder="New Password" required="">
                         </div>
                         <div class="form-group">
-
-
-                                <span><i class="fa fa-upload"></i> Update Profile Photo</span>
-                                <input type="file" name="upload" class="form-control required" placeholder="upload photo">
-						</div>
-
-
-                        <button class="btn btn-md button-theme" name = "submit" >Save Changes</button>
-
+                            <label>Confirm New Password</label>
+                            <input type="password" class="input-text" name="cnpassword" placeholder="Confirm New Password" required="">
+                        </div>
+                        <button class="btn btn-md button-theme" name = "save">Save Changes</button>
                     </form>
                 </div>
                 <!-- My address end -->
@@ -262,19 +273,19 @@ if (isset($_POST['submit'])){
         </div>
     </div>
 </div>
-<!-- My profile end -->
+<!-- Change password end -->
 
 <!-- Footer start -->
 <footer class="footer">
-    <div class="container footer-inner">
+  <div class="container footer-inner">
 
 
-        <div class="row">
-            <div class="col-xl-12">
-                <p class="copy">© Ejigson</p>
-            </div>
-        </div>
-    </div>
+      <div class="row">
+          <div class="col-xl-12">
+              <p class="copy">© Ejigson</p>
+          </div>
+      </div>
+  </div>
 </footer>
 <!-- Footer end -->
 
@@ -319,4 +330,4 @@ if (isset($_POST['submit'])){
 </body>
 
 
-</html>
+</php>

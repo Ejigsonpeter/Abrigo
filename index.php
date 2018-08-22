@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="zxx">
+<?php
+ include 'connection.php';
+ // user count
+ $sql = "SELECT * FROM users";
+ $query = mysqli_query($con,$sql);
+ $num = mysqli_num_rows($query);
+ //gk houses
+ $gk = "Gidan Kwano";
+ $sql1 = "SELECT * FROM props where campus = '$gk' ";
+ $query1 = mysqli_query($con,$sql1);
+ $num1 = mysqli_num_rows($query1);
 
+ //bosso houses
+ $bos = "Bosso";
+ $sql2 = "SELECT * FROM props where campus = '$bos' ";
+ $query2 = mysqli_query($con,$sql2);
+ $num2 = mysqli_num_rows($query2);
+
+// number of landlords
+
+ $sql3 = "SELECT * FROM lanlords";
+ $query3 = mysqli_query($con,$sql3);
+ $num3 = mysqli_num_rows($query3);
+
+
+
+?>
+
+<?php
+
+ if (isset($_post['search'])){
+
+    echo '<div class="alert alert-danger wow fadeInRight delay-03s"  role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Oh snap!</strong> You must login first !!
+    </div>';
+
+ }
+?>
 
 <head>
     <title>Home</title>
@@ -51,7 +89,7 @@
 <header class="main-header header-transparent">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand logo" href="index.html">
+            <a class="navbar-brand logo" href="index.php">
                 <img src="img/logos/logo.png" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,20 +99,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item ">
-                        <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link " href="index.php"   aria-haspopup="true" aria-expanded="false">
                             Home
                         </a>
 
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link " href="about.php"   aria-haspopup="true" aria-expanded="false">
                             About
                         </a>
 
 
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link " href="contact.php"   aria-haspopup="true" aria-expanded="false">
                             contact us
                         </a>
 
@@ -102,9 +140,7 @@
                             </ul>
                         </li>
                     </li>
-                    <li class="nav-item">
-                        <a href="#full-page-search" class="nav-link link-color"><i class="fa fa-search"></i></a>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>
@@ -125,7 +161,7 @@
                             <p data-animation="animated fadeInUp delay-10s">
                                 Welcome to Abrigo, The Leading website for finding Accomodation
                             </p>
-
+                            <form action = "index.php" method="post" >
                             <div class="inline-search-area ml-auto mr-auto">
                                 <div class="row animated fadeInUp">
                                     <div class="col-xl-4 col-sm-4 col-6 search-col">
@@ -137,23 +173,29 @@
                                     </select>
                                     </div>
                                     <div class="col-xl-3 col-sm-3 col-6 search-col middle-col-1">
-                                        <select class="selectpicker search-fields" name="property-status">
-                                            <option>Property Status</option>
-                                            <option>For Rent</option>
-                                            <option>For Sale</option>
+                                        <select class="selectpicker search-fields" name="bedrooms">
+                                            <option>Bedrooms</option>
+                                            <option value = "1">1</option>
+                                            <option value = "2">2</option>
+                                            <option value = "3">3</option>
+                                            <option value = "4">4</option>
+                                            <option value = "5">5</option>
+                                            <option value = "6">6</option>
                                         </select>
                                     </div>
                                     <div class="col-xl-3 col-sm-3 col-8 search-col middle-col-2">
-                                      <select class="selectpicker search-fields" name="property-status">
-                                          <option>Gidan Kwano</option>
-                                          <option>Bosso</option>
-                                      </select>
+                                      <select class="selectpicker search-fields" name="location">
+                                    <option value = "Gidan Kwano">Location </option>
+                                    <option value = "Gidan Kwano">Gidan Kwano </option>
+                                    <option value = "Bosso">Bosso</option>
+                                </select>
                                     </div>
                                     <div class="col-xl-2 col-sm-2 col-4 search-col">
                                         <button class="btn button-theme btn-search btn-block">
                                             <i class="fa fa-search"></i><strong>Find</strong>
                                         </button>
                                     </div>
+                                </form>
                                 </div>
                             </div>
                         </div>
@@ -174,25 +216,31 @@
                             <div class="inline-search-area ml-auto mr-auto">
                                 <div class="row animated fadeInUp">
                                     <div class="col-xl-4 col-sm-4 col-6 search-col">
-                                        <select class="selectpicker search-fields" name="property-status">
-                                      <option>I am looking for a ......</option>
-                                      <option>Single Room</option>
-                                      <option>One room self contain</option>
-                                      <option>two room self contain</option>
-                                    </select>
+                                                <select class="selectpicker search-fields" name="roomtype">
+                                           <option value  = "single room">House type</option>
+                                          <option value  = "single room">single room</option>
+                                          <option value = "self contain">self contain</option>
+                                          <option value = "Flat">Flat</option>
+                                          <option value = "Duplex">Duplex</option>
+                                        </select>
                                     </div>
                                     <div class="col-xl-3 col-sm-3 col-6 search-col middle-col-1">
-                                        <select class="selectpicker search-fields" name="property-status">
-                                            <option>Property Status</option>
-                                            <option>For Rent</option>
-                                            <option>For Sale</option>
+                                        <select class="selectpicker search-fields" name="bedrooms">
+                                            <option>Bedrooms</option>
+                                            <option value = "1">1</option>
+                                            <option value = "2">2</option>
+                                            <option value = "3">3</option>
+                                            <option value = "4">4</option>
+                                            <option value = "5">5</option>
+                                            <option value = "6">6</option>
                                         </select>
                                     </div>
                                     <div class="col-xl-3 col-sm-3 col-8 search-col middle-col-2">
-                                      <select class="selectpicker search-fields" name="property-status">
-                                          <option>Gidan Kwano</option>
-                                          <option>Bosso</option>
-                                      </select>
+                                      <select class="selectpicker search-fields" name="location">
+                                    <option value = "Gidan Kwano">Location </option>
+                                    <option value = "Gidan Kwano">Gidan Kwano </option>
+                                    <option value = "Bosso">Bosso</option>
+                                </select>
                                     </div>
                                     <div class="col-xl-2 col-sm-2 col-4 search-col">
                                         <button class="btn button-theme btn-search btn-block">
@@ -219,25 +267,31 @@
                             <div class="inline-search-area ml-auto mr-auto">
                                 <div class="row animated fadeInUp">
                                     <div class="col-xl-4 col-sm-4 col-6 search-col">
-                                        <select class="selectpicker search-fields" name="property-status">
-                                      <option>I am looking for a ......</option>
-                                      <option>Single Room</option>
-                                      <option>One room self contain</option>
-                                      <option>two room self contain</option>
-                                    </select>
+                                        <select class="selectpicker search-fields" name="roomtype">
+                                   <option value  = "single room">House type</option>
+                                  <option value  = "single room">single room</option>
+                                  <option value = "self contain">self contain</option>
+                                  <option value = "Flat">Flat</option>
+                                  <option value = "Duplex">Duplex</option>
+                                </select>
                                     </div>
                                     <div class="col-xl-3 col-sm-3 col-6 search-col middle-col-1">
-                                        <select class="selectpicker search-fields" name="property-status">
-                                            <option>Property Status</option>
-                                            <option>For Rent</option>
-                                            <option>For Sale</option>
+                                        <select class="selectpicker search-fields" name="bedrooms">
+                                            <option>Bedrooms</option>
+                                            <option value = "1">1</option>
+                                            <option value = "2">2</option>
+                                            <option value = "3">3</option>
+                                            <option value = "4">4</option>
+                                            <option value = "5">5</option>
+                                            <option value = "6">6</option>
                                         </select>
                                     </div>
                                     <div class="col-xl-3 col-sm-3 col-8 search-col middle-col-2">
-                                      <select class="selectpicker search-fields" name="property-status">
-                                          <option>Gidan Kwano</option>
-                                          <option>Bosso</option>
-                                      </select>
+                                      <select class="selectpicker search-fields" name="location">
+                                    <option value = "Gidan Kwano">Location </option>
+                                    <option value = "Gidan Kwano">Gidan Kwano </option>
+                                    <option value = "Bosso">Bosso</option>
+                                </select>
                                     </div>
                                     <div class="col-xl-2 col-sm-2 col-4 search-col">
                                         <button class="btn button-theme btn-search btn-block">
@@ -543,33 +597,43 @@
             <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInLeft delay-04s">
                 <div class="media counter-box">
                     <div class="media-left">
-                        <i class="flaticon-tag"></i>
+                        <i class="flaticon-people"></i>
                     </div>
                     <div class="media-body">
-                        <h1 class="counter">967</h1>
-                        <p>Listings For Sale</p>
+                        <h1 class="counter"><?php
+                         echo $num;
+
+                        ?></h1>
+                         <p>Users</p>
+                       
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInLeft delay-04s">
                 <div class="media counter-box">
                     <div class="media-left">
-                        <i class="flaticon-business"></i>
+                        <i class="flaticon-apartment"></i>
                     </div>
                     <div class="media-body">
-                        <h1 class="counter">1276</h1>
-                        <p>Listings For Rent</p>
+                        <h1 class="counter"><?php
+                         echo $num1;
+
+                        ?></h1>
+                        <p>House(s) in Gidan Kwano</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInRight delay-04s">
                 <div class="media counter-box">
                     <div class="media-left">
-                        <i class="flaticon-people"></i>
+                        <i class="flaticon-apartment"></i>
                     </div>
                     <div class="media-body">
-                        <h1 class="counter">396</h1>
-                        <p>Agents</p>
+                        <h1 class="counter"><?php
+                         echo $num2;
+
+                        ?></h1>
+                        <p>House(s) In Bosso</p>
                     </div>
                 </div>
             </div>
@@ -579,8 +643,11 @@
                         <i class="flaticon-people-1"></i>
                     </div>
                     <div class="media-body">
-                        <h1 class="counter">177</h1>
-                        <p>Brokers</p>
+                        <h1 class="counter"><?php
+                         echo $num3;
+
+                        ?></h1>
+                        <p>Landlord(s)</p>
                     </div>
                 </div>
             </div>
@@ -602,62 +669,7 @@
 <!-- Footer start -->
 <footer class="footer">
     <div class="container footer-inner">
-        <div class="row">
-            <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-item">
-                    <h4>Contact Us</h4>
-
-                    <ul class="contact-info">
-                        <li>
-                            Address: 20/F Green Road, Dhanmondi, Dhaka
-                        </li>
-                        <li>
-                            Email: <a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
-                        </li>
-                        <li>
-                            Phone: <a href="tel:+55-417-634-7071">+0477 85X6 552</a>
-                        </li>
-                        <li>
-                            Fax: +0477 85X6 552
-                        </li>
-                    </ul>
-
-                    <ul class="social-list clearfix">
-                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
-                        <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
-
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-
-
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-item clearfix">
-                    <h4>Subscribe</h4>
-                    <div class="Subscribe-box">
-                        <p>enter your email to subscribe for more updates on Apartments</p>
-                        <form action="#" method="GET">
-                            <p>
-                                <input type="text" class="form-contact" name="email" placeholder="Enter Address">
-                            </p>
-                            <p>
-                                <button type="submit" name="submitNewsletter" class="btn btn-block button-theme">
-                                    Subscribe
-                                </button>
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        
         <div class="row">
             <div class="col-xl-12">
                 <p class="copy">Ejigson Soft © 2017 <a href="#"></a> </p>
@@ -668,13 +680,7 @@
 <!-- Footer end -->
 
 <!-- Full Page Search -->
-<div id="full-page-search">
-    <button type="button" class="close">×</button>
-    <form action="http://storage.googleapis.com/themevessel-items/real-house/index.html#">
-        <input type="search" value="" placeholder="type keyword(s) here" />
-        <button type="submit" class="btn btn-sm button-theme">Search</button>
-    </form>
-</div>
+
 
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/popper.min.js"></script>

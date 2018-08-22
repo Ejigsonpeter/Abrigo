@@ -19,8 +19,6 @@ else {
   header("location:login.php");
 }
 
-
-
 ?>
 
 <head>
@@ -156,7 +154,7 @@ else {
                 <div class="col-md-8">
                     <div class="contact-info">
                         <ul>
-                            <li><i class="fa fa-phone"></i> +1-8X0-666-8X88</li>
+                            <li><i class="fa fa-phone"></i> +2348136777465</li>
                             <li><a href="contact.html" class="btn btn-md button-theme">Contact us</a></li>
                         </ul>
                     </div>
@@ -243,7 +241,7 @@ else {
                      while ($rw = mysqli_fetch_assoc($query)) {
                            echo '<tr>
                                <td class="image">
-                                   <a href="properties-details.html"><img a src= "'.$rw['photo1'].'" class="img-fluid"></a>
+                                   <a href="#"><img a src= "'.$rw['photo1'].'" class="img-fluid"></a>
                                </td>
                                <td>
                                    <div class="inner">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<hmtl lang="zxx">
 <?php
 include 'connection.php';
 session_start();
@@ -123,9 +123,9 @@ if (isset($_POST['submit'])){
     <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script  src="js/ie-emulation-modes-warning.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- php5 shim and Respond.js for IE8 support of php5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script  src="js/html5shiv.min.js"></script>
+    <script  src="js/php5shiv.min.js"></script>
     <script  src="js/respond.min.js"></script>
     <![endif]-->
 </head>
@@ -154,7 +154,7 @@ if (isset($_POST['submit'])){
 <header class="main-header">
   <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand logo" href="index.html">
+          <a class="navbar-brand logo" href="index.php">
               <img src="img/logos/logo.png" alt="logo">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,7 +178,7 @@ if (isset($_POST['submit'])){
 
 
                   <li class="nav-item ">
-                      <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="index.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-eye"> &nbsp; View Properties</i>
                       </a>
 
@@ -206,7 +206,7 @@ if (isset($_POST['submit'])){
                 <div class="col-md-4">
                     <div class="breadcrumb-area">
                         <ul>
-                            <li><a href="index.html">Index</a></li>
+                            <li><a href="index.php">Index</a></li>
                             <li><span>/</span>Submit Property</li>
                         </ul>
                     </div>
@@ -215,7 +215,7 @@ if (isset($_POST['submit'])){
                     <div class="contact-info">
                         <ul>
                             <li><i class="fa fa-phone"></i> +1-8X0-666-8X88</li>
-                            <li><a href="contact.html" class="btn btn-md button-theme">Contact us</a></li>
+                            <li><a href="contact.php" class="btn btn-md button-theme">Contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -237,14 +237,14 @@ if (isset($_POST['submit'])){
                         <div class="search-contents-sidebar mb-30">
                             <div class="form-group">
                                 <label>Property Title</label>
-                                <input type="text" class="input-text" name="title" >
+                                <input type="text" class="input-text" name="title" required="" >
                             </div>
                             <div class="row">
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Type</label>
-                                        <select class="selectpicker search-fields" name="type">
+                                        <select class="selectpicker search-fields" name="type" required="">
                                             <option value  = "single room">single room</option>
                                             <option value = "self contain">self contain</option>
                                             <option value = "Flat">Flat</option>
@@ -256,7 +256,7 @@ if (isset($_POST['submit'])){
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Price</label>
-                                        <input type="text" class="input-text" name="price" placeholder="NAIRA">
+                                        <input type="text" class="input-text" name="price" placeholder="NAIRA" required="">
                                     </div>
                             </div>
                             <div class="row">
@@ -266,7 +266,7 @@ if (isset($_POST['submit'])){
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Rooms</label>
-                                        <select class="selectpicker search-fields" name="room">
+                                        <select class="selectpicker search-fields" name="room" required="">
                                             <option value = "1">1</option>
                                             <option value = "2">2</option>
                                             <option value = "3">3</option>
@@ -279,7 +279,7 @@ if (isset($_POST['submit'])){
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Bathroom</label>
-                                        <select class="selectpicker search-fields" name="bathroom">
+                                        <select class="selectpicker search-fields" name="bathroom" required="">
                                           <option value = "1">1</option>
                                           <option value = "2">2</option>
                                           <option value = "3">3</option>
@@ -297,13 +297,13 @@ if (isset($_POST['submit'])){
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Photo1</label>
-                                    <input type="file" class="input-text" name="photo1"  >
+                                    <input type="file" class="input-text" name="photo1" required="" >
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>photo 2</label>
-                                    <input type="file" class="input-text" name="photo2"  >
+                                    <input type="file" class="input-text" name="photo2"  required="">
                                 </div>
                             </div>
                         </div>
@@ -311,13 +311,13 @@ if (isset($_POST['submit'])){
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Photo 3</label>
-                                    <input type="file" class="input-text" name="photo3"  >
+                                    <input type="file" class="input-text" name="photo3"  required="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>photo 4 </label>
-                                    <input type="file" class="input-text" name="photo4"  >
+                                    <input type="file" class="input-text" name="photo4" required="" >
                                 </div>
                             </div>
                         </div>
@@ -327,13 +327,13 @@ if (isset($_POST['submit'])){
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="input-text" name="address"  placeholder="Address">
+                                    <input type="text" class="input-text" name="address"  placeholder="Address"required="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Campus</label>
-                                    <select class="selectpicker search-fields" name="campus">
+                                    <select class="selectpicker search-fields" name="campus" required="" required="">
                                         <option>Choose Campus</option>
                                         <option>Gidan Kwano</option>
                                         <option>Bosso</option>
@@ -350,19 +350,19 @@ if (isset($_POST['submit'])){
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="input-text" name="fname" placeholder="Name">
+                                    <input type="text" class="input-text" name="fname" placeholder="Name" required="">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="input-text" name="email" placeholder="Email">
+                                    <input type="email" class="input-text" name="email" placeholder="Email" required="">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Phone (optional)</label>
-                                    <input type="text" class="input-text" name="phone"  placeholder="Phone">
+                                    <input type="text" class="input-text" name="phone"  placeholder="Phone" required="">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -394,7 +394,7 @@ if (isset($_POST['submit'])){
 <!-- Full Page Search -->
 <div id="full-page-search">
     <button type="button" class="close">×</button>
-    <form action="http://storage.googleapis.com/themevessel-items/real-house/index.html#">
+    <form action="http://storage.googleapis.com/themevessel-items/real-house/index.php#">
         <input type="search" value="" placeholder="type keyword(s) here" />
         <button type="submit" class="btn btn-sm button-theme">Search</button>
     </form>
@@ -438,4 +438,4 @@ if (isset($_POST['submit'])){
 </body>
 
 
-</html>
+</php>

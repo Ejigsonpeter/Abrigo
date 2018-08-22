@@ -12,6 +12,7 @@ if (isset($_POST['submit'])){
   if ($count > 0){
     session_start();
     $_SESSION['login'] = $_POST['studentid'];
+
     echo '<div class="alert alert-success wow fadeInLeft delay-03s"  role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Well done!</strong> Login successfull!!
