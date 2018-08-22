@@ -108,7 +108,7 @@ else{
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="#"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="room.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-search"> &nbsp; Search for Roommate</i>
                       </a>
 
@@ -178,7 +178,7 @@ else{
 
  // first query
 
-                   $sql = "SELECT * FROM users WHERE alcohol= '$alcohol' and smoke = '$smoke' and clean = '$clean' and cook = '$cook' and studious = '$studious' and guest = '$friend' ";
+                   $sql = "SELECT * FROM users WHERE alcohol like '$alcohol' and smoke like '$smoke' and clean like '$clean' and studious like '$studious' or cook like '$cook' or guest like '$friend' ";
                    $query = mysqli_query($con,$sql);
                    $count = mysqli_num_rows($query);
 
@@ -234,7 +234,7 @@ else{
                                       </li>
                                       <li>
                                          
-                                          <span>Clean : '.$rw['coke'].'</span>
+                                          <span>Cook : '.$rw['cook'].'</span>
                                       </li>
                                       <li>
                                          

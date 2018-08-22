@@ -128,15 +128,16 @@ if (isset($_POST['submit'])){
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="submit-property.php"   aria-haspopup="true" aria-expanded="false">
-                         <i class="flaticon-cross"> &nbsp;  Add Property</i>
+                      <a class="nav-link" href="submit-property.php"   aria-haspopup="true" aria-expanded="false">
+                         <i class="fa fa-university"> &nbsp;  Add property</i>
                       </a>
 
                   </li>
+                 
 
 
                   <li class="nav-item ">
-                      <a class="nav-link " href="profile.php"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="my-properties.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-eye"> &nbsp; View Properties</i>
                       </a>
 
@@ -160,24 +161,7 @@ if (isset($_POST['submit'])){
     </div>
     <div class="page-info">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="breadcrumb-area">
-                        <ul>
-                            <li><a href="index.php">Index</a></li>
-                            <li><span>/</span>My Profile</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="contact-info">
-                        <ul>
-                            <li><i class="fa fa-phone"></i> +2348136777465</li>
-                            <li><a href="contact.html" class="btn btn-md button-theme">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>
@@ -207,7 +191,7 @@ if (isset($_POST['submit'])){
                         <li>
                             <a href="submit-property.php" class="">
                                 <i class="flaticon-cross"></i>Add property
-                            </a>
+                              </a>
                         </li>
 
                         <li>
@@ -221,9 +205,11 @@ if (isset($_POST['submit'])){
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="flaticon-exit"></i>Log Out
-                            </a>
+                            <form method="POST" action = "logout2.php">
+                            
+                             <button name = "logout3" class="flaticon-exit"> Log Out</button>
+                          
+                          </form>
                         </li>
                     </ul>
                 </div>

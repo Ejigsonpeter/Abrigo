@@ -154,7 +154,7 @@ if (isset($_POST['submit'])){
 <header class="main-header">
   <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand logo" href="index.php">
+          <a class="navbar-brand logo" href="profile.php">
               <img src="img/logos/logo.png" alt="logo">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -170,15 +170,16 @@ if (isset($_POST['submit'])){
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="submit-property.php"   aria-haspopup="true" aria-expanded="false">
-                         <i class="flaticon-cross"> &nbsp;  Add Property</i>
+                      <a class="nav-link" href="submit-property.php"   aria-haspopup="true" aria-expanded="false">
+                         <i class="fa fa-university"> &nbsp; Add property</i>
                       </a>
 
                   </li>
+                 
 
 
                   <li class="nav-item ">
-                      <a class="nav-link " href="index.php"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="my-properties.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-eye"> &nbsp; View Properties</i>
                       </a>
 
@@ -189,7 +190,6 @@ if (isset($_POST['submit'])){
               </ul>
           </div>
       </nav>
-  </div>
 </header>
 <!-- Main header end -->
 
@@ -202,24 +202,7 @@ if (isset($_POST['submit'])){
     </div>
     <div class="page-info">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="breadcrumb-area">
-                        <ul>
-                            <li><a href="index.php">Index</a></li>
-                            <li><span>/</span>Submit Property</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="contact-info">
-                        <ul>
-                            <li><i class="fa fa-phone"></i> +1-8X0-666-8X88</li>
-                            <li><a href="contact.php" class="btn btn-md button-theme">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 </div>

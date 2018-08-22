@@ -94,7 +94,7 @@ else {
 <header class="main-header">
   <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand logo" href="index.html">
+          <a class="navbar-brand logo" href="profile.php">
               <img src="img/logos/logo.png" alt="logo">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,15 +110,16 @@ else {
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="submit-property.php"   aria-haspopup="true" aria-expanded="false">
-                         <i class="flaticon-cross"> &nbsp;  Add Property</i>
+                      <a class="nav-link" href="submit-property.php"   aria-haspopup="true" aria-expanded="false">
+                         <i class="fa fa-university"> &nbsp;  Add property</i>
                       </a>
 
                   </li>
+                 
 
 
                   <li class="nav-item ">
-                      <a class="nav-link " href="index.html"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="my-properties.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-eye"> &nbsp; View Properties</i>
                       </a>
 
@@ -140,28 +141,7 @@ else {
             <h1>My Properties</h1>
         </div>
     </div>
-    <div class="page-info">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="breadcrumb-area">
-                        <ul>
-                            <li><a href="index.html">Index</a></li>
-                            <li><span>/</span>My Properties</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="contact-info">
-                        <ul>
-                            <li><i class="fa fa-phone"></i> +2348136777465</li>
-                            <li><a href="contact.html" class="btn btn-md button-theme">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </div>
 <!-- Sub Banner end -->
 
@@ -180,43 +160,45 @@ else {
                  </div>
                  <!-- Avatar end -->
                  <!-- My account box start -->
-                 <<div class="my-account-box">
-                     <ul>
-                         <li>
-                             <a href="my-profile.html" class="active">
-                                 <i class="flaticon-people"></i>My Profile
-                             </a>
-                         </li>
+                  <div class="my-account-box">
+                    <ul>
+                        <li>
+                            <a href="profile.php" class="active">
+                                <i class="flaticon-people"></i>My Profile
+                            </a>
+                        </li>
 
-                         <li>
-                             <a href="submit-property.php" class="">
-                                 <i class="flaticon-cross"></i>Add property
-                             </a>
-                         </li>
+                        <li>
+                            <a href="submit-property.php" class="">
+                                <i class="flaticon-cross"></i>Add property
+                              </a>
+                        </li>
 
-                         <li>
-                             <a href="submit-property.html">
-                                 <i class="fa fa-eye"></i>View Property
-                             </a>
-                         </li>
-                         <li>
-                             <a href="change-password.html">
-                                 <i class="flaticon-lock"></i>Change Password
-                             </a>
-                         </li>
-                         <li>
-                             <a href="#">
-                                 <i class="flaticon-exit"></i>Log Out
-                             </a>
-                         </li>
-                     </ul>
-                 </div>
+                        <li>
+                            <a href="my-properties.php">
+                                <i class="fa fa-eye"></i>View Property
+                            </a>
+                        </li>
+                        <li>
+                            <a href="change-password2.php">
+                                <i class="flaticon-lock"></i>Change Password
+                            </a>
+                        </li>
+                        <li>
+                            <form method="POST" action = "logout2.php">
+                            
+                             <button name = "logout3" class="flaticon-exit"> Log Out</button>
+                          
+                          </form>
+                        </li>
+                    </ul>
+                </div>
                  <!-- My account box end -->
             </div>
 
              <div class="col-lg-8 col-md-12 col-sm-12">
                 <!-- Heading -->
-                <h3 class="heading-2">Favorited Properties</h3>
+                <h3 class="heading-2">Properties uploaded </h3>
                  <div class="my-properties">
                    <?php
                    include 'connection.php';
@@ -233,7 +215,7 @@ else {
                              <th></th>
                              <th>PRICE</th>
                              <th>LOCATION</th>
-                             <th>ACTIONS</th>
+                            
                          </tr>
                          </thead>
                          <tbody> ';
@@ -245,17 +227,14 @@ else {
                                </td>
                                <td>
                                    <div class="inner">
-                                       <a href="properties-details.html"></a>
+                                       <a href="#"></a>
                                        <figure><i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i> '.$rw['address'].'</figure>
                                        <div class="tag price">'.$rw['type'].'</div>
                                    </div>
                                </td>
                                <td>'.$rw['price'].'</td>
                                <td>'.$rw['campus'].'</td>
-                               <td class="actions">
-                                   <a href="#" class="edit"><i class="fa fa-pencil"></i>Edit</a>
-                                   <a href="#"><i class="delete fa fa-trash-o"></i></a>
-                               </td>
+                               
                            </tr>';
 
                      }
@@ -287,13 +266,7 @@ else {
 <!-- Footer end -->
 
 <!-- Full Page Search -->
-<div id="full-page-search">
-    <button type="button" class="close">×</button>
-    <form action="http://storage.googleapis.com/themevessel-items/real-house/index.html#">
-        <input type="search" value="" placeholder="type keyword(s) here" />
-        <button type="submit" class="btn btn-sm button-theme">Search</button>
-    </form>
-</div>
+
 
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/popper.min.js"></script>

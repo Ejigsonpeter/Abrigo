@@ -104,19 +104,8 @@
                         </a>
 
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link " href="about.php"   aria-haspopup="true" aria-expanded="false">
-                            About
-                        </a>
-
-
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link " href="contact.php"   aria-haspopup="true" aria-expanded="false">
-                            contact us
-                        </a>
-
-                    </li>
+                    
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             sign up

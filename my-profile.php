@@ -140,7 +140,7 @@ if (isset($_POST['submit'])){
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="#"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="room.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-search"> &nbsp; Search for Roommate</i>
                       </a>
 
@@ -209,7 +209,7 @@ if (isset($_POST['submit'])){
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="room.php">
                                 <i class="fa fa-search "></i>Search for Roommate
                             </a>
                         </li>
@@ -223,10 +223,11 @@ if (isset($_POST['submit'])){
                                 <i class="flaticon-lock"></i>Change Password
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="flaticon-exit"></i>Log Out
-                            </a>
+                        <li><form method="POST" action = "logout.php">
+                            
+                             <button name = "logout1" class="flaticon-exit"> Log Out</button>
+                          
+                          </form>
                         </li>
                     </ul>
                 </div>

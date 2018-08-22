@@ -136,7 +136,7 @@ if (isset($_POST['save'])){
 <header class="main-header">
   <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand logo" href="my-profile.php">
+          <a class="navbar-brand logo" href="profile.php">
               <img src="img/logos/logo.png" alt="logo">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,27 +146,23 @@ if (isset($_POST['save'])){
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item ">
-                      <a class="nav-link " href="my-profile.php"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="profile.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-home"> &nbsp;  My Profile</i>
                       </a>
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="properties-details.php"   aria-haspopup="true" aria-expanded="false">
-                         <i class="fa fa-search"> &nbsp;  Search for Accomodation </i>
-                      </a>
-
-
-                  </li>
-                  <li class="nav-item ">
-                      <a class="nav-link " href="#"   aria-haspopup="true" aria-expanded="false">
-                         <i class="fa fa-search"> &nbsp; Search for Roommate</i>
+                      <a class="nav-link" href="submit-property.php"   aria-haspopup="true" aria-expanded="false">
+                         <i class="fa fa-university"> &nbsp; Add property</i>
                       </a>
 
                   </li>
+                 
+
+
                   <li class="nav-item ">
-                      <a class="nav-link " href="properties-list.php"   aria-haspopup="true" aria-expanded="false">
-                         <i class="fa fa-eye"> &nbsp; View Accomodation</i>
+                      <a class="nav-link " href="my-properties.php"   aria-haspopup="true" aria-expanded="false">
+                         <i class="fa fa-eye"> &nbsp; View Properties</i>
                       </a>
 
                   </li>
@@ -210,40 +206,33 @@ if (isset($_POST['save'])){
                 <div class="my-account-box">
                     <ul>
                         <li>
-                            <a href="my-profile.php" class="active">
+                            <a href="profile.php" class="active">
                                 <i class="flaticon-people"></i>My Profile
                             </a>
                         </li>
 
                         <li>
-                            <a href="Preference.php" class="">
-                                <i class="flaticon-cross"></i>Add Preferences
+                            <a href="submit-property.php" class="">
+                                <i class="flaticon-cross"></i>Add property
+                              </a>
+                        </li>
+
+                        <li>
+                            <a href="my-properties.php">
+                                <i class="fa fa-eye"></i>View Property
                             </a>
                         </li>
                         <li>
-                            <a href="properties-details.php">
-                                <i class="fa fa-search"></i>Search for Accomodation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-search "></i>Search for Roommate
-                            </a>
-                        </li>
-                        <li>
-                            <a href="properties-list.php">
-                                <i class="fa fa-eye"></i>View Accomodation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="change-password.php">
+                            <a href="change-password2.php">
                                 <i class="flaticon-lock"></i>Change Password
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="flaticon-exit"></i>Log Out
-                            </a>
+                            <form method="POST" action = "logout2.php">
+                            
+                             <button name = "logout3" class="flaticon-exit"> Log Out</button>
+                          
+                          </form>
                         </li>
                     </ul>
                 </div>

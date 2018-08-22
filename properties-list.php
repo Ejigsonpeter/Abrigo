@@ -108,7 +108,7 @@ else{
 
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link " href="#"   aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link " href="room.php"   aria-haspopup="true" aria-expanded="false">
                          <i class="fa fa-search"> &nbsp; Search for Roommate</i>
                       </a>
 
