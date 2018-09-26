@@ -5,6 +5,19 @@
 include 'connection.php';
 session_start();
 if (isset($_SESSION['login'])){
+  $id = $_SESSION['login'];
+  //echo $id;
+  $sql =  "SELECT * FROM  users WHERE studentid = '$id' ";
+  $query = mysqli_query($con,$sql);
+  $rw = mysqli_fetch_assoc($query);
+  $fullname = $rw['fullname'];
+  $studentid= $rw['studentid'];
+  $faculty = $rw['faculty'];
+  $department = $rw['department'];
+  $level = $rw['level'];
+  $phoneno = $rw['phonenumber'];
+  $gender = $rw['gender'];
+  $photo = $rw['passport'];
 
 }
 else{
@@ -176,14 +189,18 @@ else{
                   $studious = mysqli_escape_string($con,$_POST['studious']);
                   $friend = mysqli_escape_string($con,$_POST['friends']);
 
- // first query
+                  //echo $gender;
 
-                   $sql = "SELECT * FROM users WHERE alcohol like '$alcohol' and smoke like '$smoke' and clean like '$clean' and studious like '$studious' or cook like '$cook' or guest like '$friend' ";
+ // first query   
+
+                   $sql = "SELECT * FROM users WHERE gender = '$gender' and studentid <> '$studentid' and alcohol = '$alcohol' and smoke = '$smoke' and clean = '$clean' and studious = '$studious'  and status = '0' ";
                    $query = mysqli_query($con,$sql);
                    $count = mysqli_num_rows($query);
 
                    if ($count > 0 ){
                     while ($rw = mysqli_fetch_assoc($query)){
+
+
 
                       echo '  <div class="property-box-2 wow fadeInUp delay-03s" >
                         <div class="row">
@@ -239,7 +256,14 @@ else{
                                       <li>
                                          
                                           <span>Night guest : '.$rw['guest'].'</span>
+
                                       </li>
+
+                                      <li><form method="POST" action = "logout.php">
+                            
+                                  <button name = "logout1" class="fa-envelope-o"> Send Request </button>
+                          
+                                  </form></li>
                                       
 
 
@@ -291,50 +315,57 @@ else{
                         <form method="POST" action = "room.php" enctype="multipart/form-data">
 
                             <div class="form-group">
-                              <label>Do you like someone that consumes alcohol?</label>
+                              <label>Can you live with a roommate who consumes alcohol?</label>
                                 <select class="selectpicker search-fields" name="alcohol" required="">
                                   <option value = "select">select</option>
                                     <option value = "yes">yes</option>
+                                    <option value = "maybe">maybe</option>
                                     <option value = "no">no</option>
+
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Do you like someone that smokes?</label>
+                                <label>Can you live with a roommate who smokes?</label>
                                 <select class="selectpicker search-fields" name="smoke">
                                   <option value = "select">select</option>
                                     <option value = "yes">yes</option>
+                                    <option value = "maybe">maybe</option>
                                     <option value = "no">no</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Do you like someone that can cook?</label>
+                                <label>Can you live with a roommate that cannot cook ?</label>
                                 <select class="selectpicker search-fields" name="cook">
                                    <option value = "select">select</option>
                                     <option value = "yes">yes</option>
+                                    <option value = "maybe">maybe</option>
                                     <option value = "no">no</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Do you like someone that is clean?</label>
+                                <label>Can you live with a roommate with poor cleaning habbit ?</label>
                                 <select class="selectpicker search-fields" name="clean">
                                   <option value = "select">select</option>
                                     <option value = "yes">yes</option>
+                                    <option value = "maybe">maybe</option>
                                     <option value = "no">no</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Do you like someone that is studious?</label>
+                                <label>Can you live with a roommate who is not studious?</label>
                                 <select class="selectpicker search-fields" name="studious">
                                   <option value = "select">select</option>
                                     <option value = "yes">yes</option>
+                                    <option value = "maybe">maybe</option>
                                     <option value = "no">no</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Do you like someone with overnight guest ?</label>
+                                <label>Can you live with a roommate who is likely to bring visitors that would spend one or more night ?</label>
                                 <select class="selectpicker search-fields" name="friends">
                                   <option value = "select">select</option>
                                     <option value = "yes">yes</option>
+                                    <option value = "maybe">maybe</option>
                                     <option value = "no">no</option>
                                 </select>
                             </div>

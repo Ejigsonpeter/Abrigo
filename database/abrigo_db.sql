@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 22, 2018 at 04:59 PM
+-- Generation Time: Sep 18, 2018 at 10:10 AM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `props` (
   `photo3` text NOT NULL,
   `photo4` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `props`
@@ -81,8 +81,11 @@ CREATE TABLE IF NOT EXISTS `props` (
 INSERT INTO `props` (`id`, `title`, `type`, `price`, `room`, `bathroom`, `address`, `campus`, `fullname`, `email`, `phoneno`, `photo1`, `photo2`, `photo3`, `photo4`) VALUES
 (1, 'Miafat Lodge', 'self contain', '150000', '2', '1', 'Nigeria', 'Gidan Kwano', 'Peter Ejiga', 'ejigsonpeter@gmail.com', '09033476627', 'image/11.PNG', 'image/Capture.PNG', 'image/Capture.PNG', 'image/Capture.PNG'),
 (2, 'Miafat Lodge', 'self contain\r\n', '250000', '2', '1', 'Nigeria', 'Gidan Kwano', 'Peter Ejiga', 'ejigsonpeter@gmail.com', '09033476627', 'image/properties-1.jpg', 'image/properties-1.jpg', 'image/properties-1.jpg', 'image/properties-1.jpg'),
-(3, 'Mafiat Lodge', 'self contain', '45000', '2', '1', 'Opposite Shaban Lodge Gidan Kwano Minna', 'Gidan Kwano', 'Ejiga Peter', 'ejigsonp@gmail.com', '081345677789', 'image/properties-1.jpg', 'image/properties-2.jpg', 'image/properties-3.jpg', 'image/properties-4.jpg'),
-(4, 'dsdddds', 'self contain', '5555', '2', '1', 'dsssssssssssssss', 'Gidan Kwano', '', '', '', 'image/properties-2.jpg', 'image/properties-2.jpg', 'image/properties-2.jpg', '');
+(3, 'Mafiat Lodge', 'self contain', '45000', '2', '1', 'Opposite Shaban Lodge Gidan Kwano Minna', 'Gidan Kwano', 'Ejiga Peter', 'ejigsonp@gmail.com', '09033476627', 'image/properties-1.jpg', 'image/properties-2.jpg', 'image/properties-3.jpg', 'image/properties-4.jpg'),
+(4, 'dsdddds', 'self contain', '5555', '2', '1', 'dsssssssssssssss', 'Gidan Kwano', '', '', '', 'image/properties-2.jpg', 'image/properties-2.jpg', 'image/properties-2.jpg', ''),
+(5, 'Mafiat Lodge', 'self contain', '45000', '5', '4', 'Opposite Shaban Lodge Gidan Kwano Minna', 'Gidan Kwano', 'Ejiga Peter', 'ejigsonpeter@gmail.com', '09033476627', 'image/Capcopy.png', 'image/git1.PNG', 'image/22.PNG', 'image/Capture.PNG'),
+(6, 'abrigo', 'self contain', '45000', '1', '1', 'Opposite Shaban Lodge Gidan Kwano Minna', 'Gidan Kwano', 'Ejiga Peter', 'ejigsonpeter@gmail.com', '09033476627', 'image/1.jpg', 'image/2.jpg', 'image/3.jpg', 'image/5.jpg'),
+(7, 'abrigo', 'self contain', '45000', '1', '1', 'Opposite Shaban Lodge Gidan Kwano Minna', 'Gidan Kwano', 'Ejiga Peter', 'ejigsonpeter@gmail.com', '09033476627', 'image/1.jpg', 'image/2.jpg', 'image/3.jpg', 'image/5.jpg');
 
 -- --------------------------------------------------------
 
@@ -143,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`sn`, `fullname`, `studentid`, `level`, `department`, `faculty`, `phonenumber`, `gender`, `password`, `passport`, `alcohol`, `smoke`, `cook`, `guest`, `clean`, `studious`) VALUES
-(1, 'Ejiga Peter', 'M1503324', '400 ', 'Mehatronics', 'SICT', '08097695430', 'Male', '12', 'image/WIN_20180228_12_30_01_Pro.jpg', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'),
+(1, 'Ejiga Peter', 'M1503324', '400 ', 'Mehatronics', 'SICT', '08097695430', 'Male', '12', 'image/WIN_20180228_12_30_01_Pro.jpg', 'yes', 'no', 'no', 'yes', 'yes', 'no'),
 (2, 'oja_egwemi ukatane', 'M1503325', '300', 'CPT', 'SEET', '09033476627', 'Male', '123', 'image/WIN_20180228_12_30_01_Pro.jpg', 'yes', 'no', 'yes', 'yes', 'yes', 'no');
 COMMIT;
 

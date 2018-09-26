@@ -200,7 +200,7 @@ if (isset($_POST['submit'])){
 
                         <li>
                             <a href="Preference.php" class="">
-                                <i class="flaticon-cross"></i>Add Preferences
+                                <i class="flaticon-cross"></i>Enter Personal Details
                             </a>
                         </li>
                         <li>
@@ -244,7 +244,7 @@ if (isset($_POST['submit'])){
                             <input type="text" class="input-text" name="fullname" value = "<?php  echo $fullname;?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Student IT :</label>
+                            <label>Student ID :</label>
                             <input type="text" class="input-text" name="studentid"  value = "<?php  echo $studentid;?>" readonly>
                         </div>
                         <div class="form-group">

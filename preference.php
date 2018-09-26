@@ -46,7 +46,7 @@ if (isset($_POST['submit'])){
 }
 ?>
 <head>
-    <title>Add Proferences</title>
+    <title>Enter Personal Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
@@ -214,7 +214,7 @@ if (isset($_POST['submit'])){
 
                          <li>
                              <a href="Preference.php" class="">
-                                 <i class="flaticon-cross"></i>Add Preferences
+                                 <i class="flaticon-cross"></i>Enter Personal Details
                              </a>
                          </li>
                          <li>
@@ -290,9 +290,9 @@ if (isset($_POST['submit'])){
                             <tr>
                                 <td  colspan="5">
                                   <div class="form-group radio_input">
-                                     <label>  4. Do have good cleaning habit </label><br>
-                                     <label><input type="radio" name="q4" value="yes" required="" class="icheck">&nbsp;&nbsp;&nbsp;&nbsp;yes </input></label> <br>
-                                     <label><input type="radio" name="q4" value="no"required="" class="icheck" placeholder="no" >&nbsp;&nbsp;&nbsp;&nbsp;no</input></label>
+                                     <label>  4. how is your cleaning habit ?</label><br>
+                                     <label><input type="radio" name="q4" value="yes" required="" class="icheck">&nbsp;&nbsp;&nbsp;&nbsp;Good</input></label> <br>
+                                     <label><input type="radio" name="q4" value="no"required="" class="icheck" placeholder="no" >&nbsp;&nbsp;&nbsp;&nbsp;Poor</input></label>
                        						</div>
                              </tr>
                              <tr>

@@ -210,12 +210,17 @@ if (isset($_POST['save'])){
                                 <i class="flaticon-people"></i>My Profile
                             </a>
                         </li>
-
+                           <li>
+                             <a href="Preference.php" class="">
+                                 <i class="flaticon-cross"></i>Enter Personal Details
+                             </a>
+                         </li>
                         <li>
                             <a href="submit-property.php" class="">
                                 <i class="flaticon-cross"></i>Add property
                               </a>
                         </li>
+
 
                         <li>
                             <a href="my-properties.php">
