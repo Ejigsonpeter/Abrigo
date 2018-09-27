@@ -248,7 +248,7 @@ if (isset($_POST['save'])){
 
                         <div class="form-group">
                             <label>Enter Student Id :</label>
-                            <input type="text" class="input-text" name="studentid" placeholder="Student Idf " required="">
+                            <input type="text" class="input-text" name="studentid" placeholder="Student Id " required="">
                         </div>
                         
                         <button class="btn btn-md button-theme" name = "save">Send Request</button>

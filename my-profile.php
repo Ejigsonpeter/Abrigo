@@ -213,16 +213,23 @@ if (isset($_POST['submit'])){
                                 <i class="fa fa-search "></i>Search for Roommate
                             </a>
                         </li>
+
                         <li>
                             <a href="Properties-list.php">
                                 <i class="fa fa-eye"></i>View Accomodation
                             </a>
                         </li>
-                        <li>
+                         <li>
+                            <a href="accept.php">
+                                <i class="fa fa-search "></i>View Pending Request
+                            </a>
+                        </li>
+                        <!--li>
                             <a href="change-password.php">
                                 <i class="flaticon-lock"></i>Change Password
                             </a>
-                        </li>
+                        </li-->
+
                         <li><form method="POST" action = "logout.php">
                             
                              <button name = "logout1" class="flaticon-exit"> Log Out</button>
@@ -237,6 +244,24 @@ if (isset($_POST['submit'])){
                 <!-- My address start-->
                 <div class="my-address">
                     <h3 class="heading-2">My Account</h3>
+                    <?php 
+                     $msg = "SELECT * from request where render = '$id' or sender = '$id' and status = '1' ";
+                     $vc = mysqli_query ($con,$msg);
+                     $view =  mysqli_fetch_assoc($vc);
+                     $names =  $view['fullname'];
+                     $phonenumber = $view['phonenumber'];
+
+                     if ($vc){
+                      echo '<div class="alert alert-success wow fadeInLeft delay-03s"  role="alert">
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     <strong>Well done!</strong> Request Accepted ... !!
+                 </div>';
+
+                     }
+
+
+
+                    ?>
 
                     <form action="my-profile.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">

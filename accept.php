@@ -23,8 +23,12 @@ else{
 
 
  if (isset($_POST['accept'])){
+
+
+
  $oj = "1";
  $cade =  mysqli_escape_string($con,$_POST['cash']);
+
 
  $flo = "UPDATE request  set status = '$oj' where render = '$id' ";
  $things =  mysqli_query($con,$flo);
