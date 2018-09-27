@@ -1,8 +1,80 @@
 <!DOCTYPE  html>
 <html lang="zxx">
 
+<?php
+include 'connection.php';
+session_start();
+if (isset($_SESSION['login'])){
+  $id = $_SESSION['login'];
+ // $sql =  "SELECT * FROM  request WHERE render = '$id' ";
+ // $query = mysqli_query($con,$sql);
+  //$rw =  mysqli_fetch_assoc($query);
+  //$xd = $rw['sender'];
 
 
+}
+else{
+  header('location:login.php');
+}
+
+ ?>
+
+ <?php
+
+
+ if (isset($_POST['accept'])){
+ $oj = "1";
+ $cade =  mysqli_escape_string($con,$_POST['cash']);
+
+ $flo = "UPDATE request  set status = '$oj' where render = '$id' ";
+ $things =  mysqli_query($con,$flo);
+ if ($things){
+ //echo "true";
+     $com =  "UPDATE users set status = '1' where studentid = '$id' ";
+     $tom = mysqli_query($con,$com);
+           if ($tom){
+          // echo "true";
+              $tue = "UPDATE users set status = '1' where studentid = '$cade' ";
+              $tem  = mysqli_query($con,$tue);
+
+              if ($tem){
+                echo "true";
+            }
+            else{
+            echo "true";
+          }
+         }
+         else{
+         echo "false";
+
+       }
+}
+else{
+ // echo "false";
+}
+}
+ ?>
+
+<?php
+
+
+ if (isset($_POST['decline'])){
+ $oj = "1";
+ $cade =  mysqli_escape_string($con,$_POST['cash']);
+
+ $flo = "DELETE  from request   where sender = '$cade' and render = '$id' ";
+ $things =  mysqli_query($con,$flo);
+ if ($things){
+ //echo "true";
+        }
+         else{
+         echo "false";
+
+       }
+}
+
+
+ ?>
 
  
 
@@ -126,7 +198,7 @@
 <div class="sub-banner">
     <div class="container">
         <div class="page-name">
-            <h1>Find a room mate</h1>
+            <h1>View Pending Roommate Request</h1>
         </div>
     </div>
     <div class="page-info">
@@ -147,7 +219,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-5 col-sm-5 col-xs-2">
                             <div class="sorting-options">
-                                <span>Potential Match:</span>
+                                <span>Pending Request :</span>
 
                             </div>
                         </div>
@@ -159,41 +231,17 @@
                 <!-- Property box 2 start -->
 
                 <?php
-include 'connection.php';
-session_start();
-if (isset($_SESSION['login'])){
-  $id = $_SESSION['login'];
-  //echo $id;
-  $sql =  "SELECT * FROM  request WHERE render = '$id' ";
-  $query = mysqli_query($con,$sql);
-  
-  
-
-  while ($rw = mysqli_fetch_assoc($query)) {
-  $xd = $rw['sender'];
-  
-}
-
-}
-else{
-  header('location:login.php');
-}
-
- ?>
-
-                <?php
                  include 'connection.php';
-                 
                 
-
-                   $sql = "SELECT * FROM users WHERE studentid = '$xd'  ";
-                   $query = mysqli_query($con,$sql);
+                 
+                $sql =  "SELECT * FROM  request WHERE render = '$id' and status = 'pending' ";
+                $query = mysqli_query($con,$sql);
+                
                    $count = mysqli_num_rows($query);
 
                    if ($count > 0 ){
                     while ($rw = mysqli_fetch_assoc($query)){
-
-
+                           
 
                       echo '  <div class="property-box-2 wow fadeInUp delay-03s" >
                         <div class="row">
@@ -203,7 +251,7 @@ else{
                               </a>
                           </div>
                           <div class="col-lg-7 col-md-7">
-                          <form method="POST" action = "room.php">
+                          <form method="POST" action = "accept.php">
                               <div class="detail ">
                                   <h3 class="title">
                                       <a href="#">
@@ -212,18 +260,14 @@ else{
                                   </h3>
                                   <h5 class="location">
                                       <a href="#">
-                                          <i class="flaticon-people-2"></i> student id : '.$rw['studentid'].'
+                                          <i class="flaticon-people-2"></i> student id : '.$rw['sender'].'
 
                                       </a>
                                   </h5>
-                                  <h5 class="location">
-                                      <a href="#">
-                                          <i class="flaticon-people-2"></i> Gender : '.$rw['gender'].'
-                                      </a>
-                                  </h5>
+                                  
                                   <h4 class="location">
                                       <a href="#">
-                                          <i class="flaticon-people-2"></i> Dept/Level : '.$rw['department'].' / '.$rw['level'].'
+                                          <i class="flaticon-people-2"></i> Department : '.$rw['department'].' 
                                       </a>
                                   </h4>
                                   
@@ -233,39 +277,24 @@ else{
                                       </a>
                                   </h4>
                                   <ul class="facilities-list clearfix">
-                                      <li>
-                                         
-                                          <span>Alcohol : '.$rw['alcohol'].'</span>
-                                      </li>
-                                      <li>
-                                         
-                                          <span>Smoking : '.$rw['smoke'].'</span>
-                                      </li>
-                                      <li>
-                                         
-                                          <span>Clean : '.$rw['clean'].'</span>
-                                      </li>
-                                      <li>
-                                         
-                                          <span>studious : '.$rw['studious'].'</span>
-                                      </li>
-                                      <li>
-                                         
-                                          <span>Cook : '.$rw['cook'].'</span>
-                                      </li>
-                                      <li>
-                                         
-                                          <span>Night guest : '.$rw['guest'].'</span>
+                                      
 
-                                      </li>
-
+ 
                                       <li>
-                                      <input type = "text"  name = "sid" value = '.$rw['studentid'].' hidden> </input>
+                                      
                             
-                                  <button name = "sendreq" class="fa-envelope-o"> Send Request </button>
+                                 <div> <button name = "accept" "> Accept request </button></div>
+                                 
                           
                                  </li>
+                                 <li>
                                       
+                            
+                                 <div> <button name = "decline" "> Decline request </button></div>
+                                  
+                          
+                                 </li>
+                                      <input type = "text"  name = "cash"  value = '.$rw['sender'].'  hidden> </input>
 
 
 

@@ -33,15 +33,25 @@ else{
 
 
  if (isset($_POST['sendreq'])){
-    $idx =  mysqli_escape_string($con,$_POST['sid']);
-    $stats = "pending";
 
-    $liz = "INSERT INTO request (sender,render,status)
+                                     
+     $idx =  mysqli_escape_string($con,$_POST['sid']);
+     $fullname = mysqli_escape_string($con,$_POST['fullname']);
+     $phonenumber = mysqli_escape_string($con,$_POST['phonenumber']);
+     $passport = mysqli_escape_string($con,$_POST['passport']);
+     $department = mysqli_escape_string($con,$_POST['department']);
+     $stats = "pending";
+
+
+    $liz = "INSERT INTO request (sender,render,status,fullname,phonenumber,department,passport)
            VALUES(
               '$studentid',
               '$idx',
-              '$stats'
-
+              '$stats',
+              '$fullname',
+              '$phonenumber',
+              '$department',
+              '$passport'
             )";
 
     $send = mysqli_query($con,$liz);
@@ -310,7 +320,13 @@ else{
                                       </li>
 
                                       <li>
-                                      <input type = "text"  name = "sid" value = '.$rw['studentid'].' hidden> </input>
+                                      <input type = "text"  name = "sid" value = '.$rw['studentid'].'  hidden> </input>
+                                      <input type = "text"  name = "fullname" value = '.$rw['fullname'].' hidden > </input>
+                                      <input type = "text"  name = "phonenumber" value = '.$rw['phonenumber'].' hidden > </input>
+                                      <input type = "text"  name = "department" value = '.$rw['department'].'  hidden> </input>
+                                      <input type = "text"  name = "passport" value =  '.$rw['passport'].'  hidden> </input>
+
+
                             
                                   <button name = "sendreq" class="fa-envelope-o"> Send Request </button>
                           
