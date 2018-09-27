@@ -1,73 +1,10 @@
 <!DOCTYPE  html>
 <html lang="zxx">
 
-<?php
-include 'connection.php';
-session_start();
-if (isset($_SESSION['login'])){
-  $id = $_SESSION['login'];
-  //echo $id;
-  $sql =  "SELECT * FROM  users WHERE studentid = '$id' ";
-  $query = mysqli_query($con,$sql);
-  $rw = mysqli_fetch_assoc($query);
-  $fullname = $rw['fullname'];
-  $studentid= $rw['studentid'];
-  $faculty = $rw['faculty'];
-  $department = $rw['department'];
-  $level = $rw['level'];
-  $phoneno = $rw['phonenumber'];
-  $gender = $rw['gender'];
-  $photo = $rw['passport'];
-
-}
-else{
-  header('location:login.php');
-}
-
- ?>
 
 
- <?php
- $idx = "";
- $message = "";
 
-
- if (isset($_POST['sendreq'])){
-    $idx =  mysqli_escape_string($con,$_POST['sid']);
-    $stats = "pending";
-
-    $liz = "INSERT INTO request (sender,render,status)
-           VALUES(
-              '$studentid',
-              '$idx',
-              '$stats'
-
-            )";
-
-    $send = mysqli_query($con,$liz);
-
-    if ($send){
-      $message = '<div class="col-lg-8 col-md-8">
-                <!-- My address start -->
-                <div class="my-address">
-                  
-                      
-                        
-                        <button class="btn btn-md button-theme" > Request Sent Successfully</button>
-                   
-                </div>
-                <!-- My address end -->
-            </div>';
-    }
-    else{
-      echo 'false';
-    }
-       
- }
- else{
-
- }
- ?>
+ 
 
 <head>
     <title>Find a Room mate</title>
@@ -222,21 +159,34 @@ else{
                 <!-- Property box 2 start -->
 
                 <?php
+include 'connection.php';
+session_start();
+if (isset($_SESSION['login'])){
+  $id = $_SESSION['login'];
+  //echo $id;
+  $sql =  "SELECT * FROM  request WHERE render = '$id' ";
+  $query = mysqli_query($con,$sql);
+  
+  
+
+  while ($rw = mysqli_fetch_assoc($query)) {
+  $xd = $rw['sender'];
+  
+}
+
+}
+else{
+  header('location:login.php');
+}
+
+ ?>
+
+                <?php
                  include 'connection.php';
-                 if (isset($_POST['search'])){
+                 
+                
 
-                  $alcohol = mysqli_escape_string($con,$_POST['alcohol']);
-                  $smoke = mysqli_escape_string($con,$_POST['smoke']);
-                  $clean = mysqli_escape_string($con,$_POST['clean']);
-                  $cook = mysqli_escape_string($con,$_POST['cook']);
-                  $studious = mysqli_escape_string($con,$_POST['studious']);
-                  $friend = mysqli_escape_string($con,$_POST['friends']);
-
-                  //echo $gender;
-
- // first query   
-
-                   $sql = "SELECT * FROM users WHERE gender = '$gender' and studentid <> '$studentid' and alcohol = '$alcohol' and smoke = '$smoke' and clean = '$clean' and studious = '$studious'  and status = '0' ";
+                   $sql = "SELECT * FROM users WHERE studentid = '$xd'  ";
                    $query = mysqli_query($con,$sql);
                    $count = mysqli_num_rows($query);
 
@@ -332,11 +282,11 @@ else{
 
                
 
-               }
+               
 
                   ?>
 
-                  <?php echo $message ; ?>
+                 
                   <div class="col-lg-8 col-md-8">
                 <!-- My address start -->
                 
@@ -368,72 +318,7 @@ else{
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar-right">
                     <!-- Search contents sidebar start -->
-                    <div class="sidebar widget">
-                        <h3 class="sidebar-title">Find a room mate match</h3>
-                        <form method="POST" action = "room.php" enctype="multipart/form-data">
-
-                            <div class="form-group">
-                              <label>Can you live with a roommate who consumes alcohol?</label>
-                                <select class="selectpicker search-fields" name="alcohol" required="">
-                                  <option value = "select">select</option>
-                                    <option value = "yes">yes</option>
-                                    <option value = "maybe">maybe</option>
-                                    <option value = "no">no</option>
-
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Can you live with a roommate who smokes?</label>
-                                <select class="selectpicker search-fields" name="smoke">
-                                  <option value = "select">select</option>
-                                    <option value = "yes">yes</option>
-                                    <option value = "maybe">maybe</option>
-                                    <option value = "no">no</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Can you live with a roommate that cannot cook ?</label>
-                                <select class="selectpicker search-fields" name="cook">
-                                   <option value = "select">select</option>
-                                    <option value = "yes">yes</option>
-                                    <option value = "maybe">maybe</option>
-                                    <option value = "no">no</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Can you live with a roommate with poor cleaning habbit ?</label>
-                                <select class="selectpicker search-fields" name="clean">
-                                  <option value = "select">select</option>
-                                    <option value = "yes">yes</option>
-                                    <option value = "maybe">maybe</option>
-                                    <option value = "no">no</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Can you live with a roommate who is not studious?</label>
-                                <select class="selectpicker search-fields" name="studious">
-                                  <option value = "select">select</option>
-                                    <option value = "yes">yes</option>
-                                    <option value = "maybe">maybe</option>
-                                    <option value = "no">no</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Can you live with a roommate who is likely to bring visitors that would spend one or more night ?</label>
-                                <select class="selectpicker search-fields" name="friends">
-                                  <option value = "select">select</option>
-                                    <option value = "yes">yes</option>
-                                    <option value = "maybe">maybe</option>
-                                    <option value = "no">no</option>
-                                </select>
-                            </div>
-
-                            
-                            <div class="form-group mb-0">
-                                <button class="search-button" name = "search">Search</button>
-                            </div>
-                        </form>
-                    </div>
+                    
                 </div>
             </div>
         </div>
