@@ -43,10 +43,10 @@ else{
      $stats = "pending";
 
 
-    $liz = "INSERT INTO request (sender,render,status,fullname,phonenumber,department,passport)
+    $liz = "INSERT INTO request (render,sender,status,fullname,phonenumber,department,passport)
            VALUES(
-              '$studentid',
               '$idx',
+              '$studentid',
               '$stats',
               '$fullname',
               '$phonenumber',
@@ -251,15 +251,16 @@ else{
                    $count = mysqli_num_rows($query);
 
                    if ($count > 0 ){
-                    while ($rw = mysqli_fetch_assoc($query)){
-
+                    while ($row = mysqli_fetch_assoc($query)){
+                      
+                       
 
 
                       echo '  <div class="property-box-2 wow fadeInUp delay-03s" >
                         <div class="row">
                           <div class="col-lg-5 col-md-5 col-pad">
                               <a href="#" class="property-img">
-                                  <img src="'.$rw['passport'].'" width = "750px" height = "600px" alt="properties" class="img-fluid">
+                                  <img src="'.$row['passport'].'" width = "750px" height = "600px" alt="properties" class="img-fluid">
                               </a>
                           </div>
                           <div class="col-lg-7 col-md-7">
@@ -267,64 +268,66 @@ else{
                               <div class="detail ">
                                   <h3 class="title">
                                       <a href="#">
-                                     <i class="flaticon-people"></i> Fullname : '.$rw['fullname'].'
+                                     <i class="flaticon-people"></i> Fullname : '.$row['fullname'].'
                                      </a>
                                   </h3>
                                   <h5 class="location">
                                       <a href="#">
-                                          <i class="flaticon-people-2"></i> student id : '.$rw['studentid'].'
+                                          <i class="flaticon-people-2"></i> student id : '.$row['studentid'].'
 
                                       </a>
                                   </h5>
                                   <h5 class="location">
                                       <a href="#">
-                                          <i class="flaticon-people-2"></i> Gender : '.$rw['gender'].'
+                                          <i class="flaticon-people-2"></i> Gender : '.$row['gender'].'
                                       </a>
                                   </h5>
                                   <h4 class="location">
                                       <a href="#">
-                                          <i class="flaticon-people-2"></i> Dept/Level : '.$rw['department'].' / '.$rw['level'].'
+                                          <i class="flaticon-people-2"></i> Dept/Level : '.$row['department'].' / '.$rw['level'].'
                                       </a>
                                   </h4>
                                   
                                   <h4 class="location">
                                       <a href="#">
-                                          <i class="flaticon-people-2"></i> Phone number : '.$rw['phonenumber'].'
+                                          <i class="flaticon-people-2"></i> Phone number : '.$row['phonenumber'].'
                                       </a>
                                   </h4>
                                   <ul class="facilities-list clearfix">
                                       <li>
                                          
-                                          <span>Alcohol : '.$rw['alcohol'].'</span>
+                                          <span>Alcohol : '.$row['alcohol'].'</span>
                                       </li>
                                       <li>
                                          
-                                          <span>Smoking : '.$rw['smoke'].'</span>
+                                          <span>Smoking : '.$row['smoke'].'</span>
                                       </li>
                                       <li>
                                          
-                                          <span>Clean : '.$rw['clean'].'</span>
+                                          <span>Clean : '.$row['clean'].'</span>
                                       </li>
                                       <li>
                                          
-                                          <span>studious : '.$rw['studious'].'</span>
+                                          <span>studious : '.$row['studious'].'</span>
                                       </li>
                                       <li>
                                          
-                                          <span>Cook : '.$rw['cook'].'</span>
+                                          <span>Cook : '.$row['cook'].'</span>
                                       </li>
                                       <li>
                                          
-                                          <span>Night guest : '.$rw['guest'].'</span>
+                                          <span>Night guest : '.$row['guest'].'</span>
 
                                       </li>
+                                      
+
 
                                       <li>
-                                      <input type = "text"  name = "sid" value = '.$rw['studentid'].'  hidden> </input>
-                                      <input type = "text"  name = "fullname" value = '.$rw['fullname'].' hidden > </input>
-                                      <input type = "text"  name = "phonenumber" value = '.$rw['phonenumber'].' hidden > </input>
-                                      <input type = "text"  name = "department" value = '.$rw['department'].'  hidden> </input>
-                                      <input type = "text"  name = "passport" value =  '.$rw['passport'].'  hidden> </input>
+                                      <input type = "text"  name = "sid" value = '.$row['studentid'].'  > </input>
+                                      <input type = "text"  name = "fullname" value = '.$fullname.' > </input>
+                                      <input type = "text"  name = "phonenumber" value = '.$phoneno.'  > </input>
+                                      <input type = "text"  name = "department" value = '.$department.'  > </input>
+                                      <input type = "text"  name = "passport" value =  '.$photo.'  > </input>
 
 
                             

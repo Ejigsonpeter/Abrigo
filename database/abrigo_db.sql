@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 18, 2018 at 10:10 AM
+-- Generation Time: Sep 27, 2018 at 04:29 PM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -90,6 +90,25 @@ INSERT INTO `props` (`id`, `title`, `type`, `price`, `room`, `bathroom`, `addres
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `request`
+--
+
+DROP TABLE IF EXISTS `request`;
+CREATE TABLE IF NOT EXISTS `request` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `sender` varchar(100) NOT NULL DEFAULT '0',
+  `render` varchar(100) NOT NULL DEFAULT '0',
+  `status` varchar(100) NOT NULL DEFAULT '0',
+  `fullname` varchar(200) NOT NULL,
+  `phonenumber` varchar(200) NOT NULL,
+  `department` varchar(200) NOT NULL,
+  `passport` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student_id`
 --
 
@@ -138,6 +157,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `guest` varchar(200) NOT NULL,
   `clean` varchar(200) NOT NULL,
   `studious` varchar(200) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`sn`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -145,9 +165,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`sn`, `fullname`, `studentid`, `level`, `department`, `faculty`, `phonenumber`, `gender`, `password`, `passport`, `alcohol`, `smoke`, `cook`, `guest`, `clean`, `studious`) VALUES
-(1, 'Ejiga Peter', 'M1503324', '400 ', 'Mehatronics', 'SICT', '08097695430', 'Male', '12', 'image/WIN_20180228_12_30_01_Pro.jpg', 'yes', 'no', 'no', 'yes', 'yes', 'no'),
-(2, 'oja_egwemi ukatane', 'M1503325', '300', 'CPT', 'SEET', '09033476627', 'Male', '123', 'image/WIN_20180228_12_30_01_Pro.jpg', 'yes', 'no', 'yes', 'yes', 'yes', 'no');
+INSERT INTO `users` (`sn`, `fullname`, `studentid`, `level`, `department`, `faculty`, `phonenumber`, `gender`, `password`, `passport`, `alcohol`, `smoke`, `cook`, `guest`, `clean`, `studious`, `status`) VALUES
+(1, 'Ejiga Peter', 'M1503324', '400 ', 'Mehatronics', 'SICT', '08097695430', 'Male', '12', 'image/WIN_20180228_12_30_01_Pro.jpg', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', '1'),
+(2, 'oja_egwemi ukatane', 'M1503325', '300', 'CPT', 'SEET', '09033476627', 'Male', '123', 'image/WIN_20180228_12_30_01_Pro.jpg', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', '0');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
